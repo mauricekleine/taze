@@ -6,8 +6,12 @@ import type { CommonOptions, PackageMeta, RawDep } from '../types'
 import { createDependenciesFilter } from '../utils/dependenciesFilter'
 import { dumpDependencies, getByPath, parseDependencies, parseDependency, setByPath } from './dependencies'
 
-export async function readJSON(filepath: string) {
-  return JSON.parse(await fs.readFile(filepath, 'utf-8'))
+export async function readJSON(filepathOrJson: string) {
+  try {
+    return JSON.parse(filepathOrJson)
+  } catch {
+    return JSON.parse(await fs.readFile(filepathOrJson, 'utf-8'))
+  }
 }
 
 export async function writeJSON(filepath: string, data: any) {
