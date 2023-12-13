@@ -29,6 +29,7 @@
     "start": "esno ./src/cli.ts",
     "build": "unbuild",
     "typecheck": "tsc",
+    "prepare": "nr build",
     "prepublishOnly": "nr build",
     "release": "bumpp && pnpm publish --no-git-checks",
     "test": "vitest"
